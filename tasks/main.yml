@@ -1,0 +1,23 @@
+---
+- name: add brightbox ppa for ruby
+  apt_repository:
+    repo: 'ppa:brightbox/ruby-ng-experimental'
+  when: ansible_os_family == 'Debian'
+
+- name: install ruby
+  apt:
+    pkg: "{{ item }}"
+    state: installed
+    update-cache: yes
+  with_items:
+    - "ruby{{ ruby_version }}"
+    - "ruby{{ ruby_version }}-dev"
+    - "ruby{{ ruby_version }}-doc"
+    - ruby-switch
+  when: ansible_os_family == 'Debian'
+
+- name: set ruby as default
+  shell: "ruby-switch --set ruby{{ ruby_version }}"
+
+- name: install bundler
+  shell: gem install bundler
