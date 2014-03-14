@@ -1,7 +1,15 @@
 ---
+- name: install ansible dependencies
+  apt:
+    pkg: python-pycurl
+    state: installed
+    update-cache: yes
+
 - name: add brightbox ppa for ruby
   apt_repository:
     repo: 'ppa:brightbox/ruby-ng-experimental'
+    update-cache: yes
+    state: present
   when: ansible_os_family == 'Debian'
 
 - name: install ruby
