@@ -10,7 +10,6 @@
     repo: 'ppa:brightbox/ruby-ng-experimental'
     update-cache: yes
     state: present
-  when: ansible_os_family == 'Debian'
 
 - name: install ruby
   apt:
@@ -19,10 +18,21 @@
     update-cache: yes
   with_items:
     - "ruby{{ ruby_version }}"
-    - "ruby{{ ruby_version }}-dev"
-    - "ruby{{ ruby_version }}-doc"
     - ruby-switch
-  when: ansible_os_family == 'Debian'
+
+- name: install ruby-dev
+  apt:
+    pkg: "ruby{{ ruby_version }}-dev"
+    state: installed
+    update-cache: yes
+  when: ruby_dev
+
+- name: install ruby-doc
+  apt:
+    pkg: "ruby{{ ruby_version }}-doc"
+    state: installed
+    update-cache: yes
+  when: ruby_doc
 
 - name: set ruby as default
   shell: "ruby-switch --set ruby{{ ruby_version }}"
