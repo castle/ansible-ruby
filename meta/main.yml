@@ -1,6 +1,6 @@
 galaxy_info:
-  author: "Marten Klitzke"
-  description: A Simple Role to install Ruby and Bundler
+  author: "Filip Tepper"
+  description: Install Ruby from Brightbox PPA and Bundler
   license: MIT
   min_ansible_version: 1.4
   version: 0.2
@@ -17,6 +17,8 @@ galaxy_info:
       - quantal
       - raring
       - saucy
+      - trusty
+      - xenial
   categories:
    - system
    - development
