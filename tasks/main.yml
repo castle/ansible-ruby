@@ -28,8 +28,14 @@
     update-cache: yes
   when: ruby_doc
 
+- name: check default ruby version
+  shell: "ruby-switch --check | grep ruby{{ ruby_version }}"
+  register: check_ruby_version
+  changed_when: no
+
 - name: set ruby as default
   shell: "ruby-switch --set ruby{{ ruby_version }}"
+  when: check_ruby_version['rc'] == '1'
 
 - name: install bundler
   gem:
