@@ -3,7 +3,7 @@ galaxy_info:
   description: Install Ruby from Brightbox PPA and Bundler
   license: MIT
   min_ansible_version: 1.4
-  version: 0.2
+  version: 1.0
   platforms:
     - name: Debian
       versions:
