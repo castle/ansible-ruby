@@ -1,10 +1,4 @@
 ---
-- name: install ansible dependencies
-  apt:
-    pkg: python-pycurl
-    state: installed
-    update-cache: yes
-
 - name: add brightbox ppa for ruby
   apt_repository:
     repo: 'ppa:brightbox/ruby-ng-experimental'
@@ -14,7 +8,7 @@
 - name: install ruby
   apt:
     pkg: "{{ item }}"
-    state: installed
+    state: present
     update-cache: yes
   with_items:
     - "ruby{{ ruby_version }}"
@@ -23,14 +17,14 @@
 - name: install ruby-dev
   apt:
     pkg: "ruby{{ ruby_version }}-dev"
-    state: installed
+    state: present
     update-cache: yes
   when: ruby_dev
 
 - name: install ruby-doc
   apt:
     pkg: "ruby{{ ruby_version }}-doc"
-    state: installed
+    state: present
     update-cache: yes
   when: ruby_doc
 
