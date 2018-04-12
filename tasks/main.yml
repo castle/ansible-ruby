@@ -32,4 +32,6 @@
   shell: "ruby-switch --set ruby{{ ruby_version }}"
 
 - name: install bundler
-  shell: gem install bundler
+  gem:
+    name: bundler
+    user_install: no
