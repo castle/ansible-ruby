@@ -40,4 +40,5 @@
 - name: install bundler
   gem:
     name: bundler
+    version: "{{ bundler_version }}"
     user_install: no
