@@ -32,6 +32,7 @@
   shell: "ruby-switch --check | grep ruby{{ ruby_version }}"
   register: check_ruby_version
   changed_when: no
+  check_mode: no
 
 - name: set ruby as default
   shell: "ruby-switch --set ruby{{ ruby_version }}"
