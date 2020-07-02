@@ -7,12 +7,11 @@
 
 - name: install ruby
   apt:
-    pkg: "{{ item }}"
+    pkg:
+      - "ruby{{ ruby_version }}"
+      - ruby-switch
     state: present
     update-cache: yes
-  with_items:
-    - "ruby{{ ruby_version }}"
-    - ruby-switch
 
 - name: install ruby-dev
   apt:
